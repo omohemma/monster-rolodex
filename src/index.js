@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'; // to write JSx in javascript file
+import ReactDOM from 'react-dom'; // to interact DOM to effect the state changes in our app
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
