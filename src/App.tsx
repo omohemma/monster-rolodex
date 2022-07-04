@@ -5,7 +5,7 @@ import {CardList} from "./components/card-list/card-list.component";
 import {SearchBoxComponent} from "./components/search-box/search-box.component";
 import {getData} from "./utils/data.utils";
 
-type Monsters = {
+export type Monster = {
   id: string,
   name: string,
   email: string,
@@ -15,12 +15,12 @@ type Monsters = {
 const App = () => {
   // [value, setValue] = useState('initial state')
   const [searchField, setSearchField] = useState('');
-  const [monsters, setMonsters] = useState<Monsters[]>([]);
+  const [monsters, setMonsters] = useState<Monster[]>([]);
   const [filteredMonsters, setFilteredMonsters] = useState(monsters);
 
   useEffect(() => {
     const fetchMonsters = async () => {
-      const users = await getData<Monsters[]>("https://jsonplaceholder.typicode.com/users")
+      const users = await getData<Monster[]>("https://jsonplaceholder.typicode.com/users")
       setMonsters(users);
     }
     fetchMonsters();
