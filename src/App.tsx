@@ -3,7 +3,13 @@ import './App.css';
 import {useEffect, useState} from "react";
 import {CardList} from "./components/card-list/card-list.component";
 import {SearchBoxComponent} from "./components/search-box/search-box.component";
+import {getData} from "../utils/data.utils";
 
+type Monsters = {
+  id: string,
+  name: string,
+  email: string,
+}
 
 // Switch to Functional Component
 const App = () => {
@@ -13,9 +19,16 @@ const App = () => {
   const [filteredMonsters, setFilteredMonsters] = useState(monsters);
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
-      .then(users => setMonsters(users))
+    // fetch('https://jsonplaceholder.typicode.com/users')
+    //   .then(response => response.json())
+    //   .then(users => setMonsters(users))
+
+    const fetchMonsters = async () => {
+      const users = await getData<Monsters[]>("https://jsonplaceholder.typicode.com/users")
+    }
+
+    fetchMonsters();
+
   }, [])
 
   const handleChange = (event) => {
